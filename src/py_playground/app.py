@@ -2,7 +2,6 @@ import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException, Path, status
 from httpx import Response
-import requests
 
 
 # app
