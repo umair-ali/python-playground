@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "py-playground"
+version = "0.1.0"
+description = ""
+authors = ["Umair Ali <Umair.Ali@spglobal.com>"]
+homepage = "https://github.com/umair-ali/python-playground"
+repository = "https://github.com/umair-ali/python-playground"
+license = "MIT"
+readme = "README.md"
+packages = [{include = "py_playground"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+httpx = "^0.24.1"
+fastapi = "^0.98.0"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+requests = "^2.31.0"
+certifi = "^2023.5.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
