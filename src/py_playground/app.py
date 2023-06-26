@@ -3,29 +3,30 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, Path, status
 from httpx import Response
 
-
 # app
 app: FastAPI = FastAPI()
 
-data = { "index": -1, "value": "hello fast api!"}
+data = {"index": -1, "value": "hello fast api!"}
+
+
 @app.get(path="/api/v1/data/{number}", status_code=status.HTTP_200_OK)
 def get_data(
-        number: int = Path(title="The data to get (based on number)", ge=1, le=15)
+    number: int = Path(title="The data to get (based on number)", ge=1, le=15)
 ) -> list:
     result = []
     for x in range(number):
-        result.append({ "index": x, "value": "hello fast api!"})
+        result.append({"index": x, "value": "hello fast api!"})
     return result
 
 
 @app.get(path="/api/v1/pokemon/{number}", status_code=status.HTTP_200_OK)
 def get_pokemon(
-        number: int = Path(title="The Pokémon to get (based on number)", ge=1, le=151)
+    number: int = Path(title="The Pokémon to get (based on number)", ge=1, le=151)
 ) -> dict:
     pokemon_url: str = f"https://pokeapi.co/api/v2/pokemon/{number}"
 
     try:
-        response = httpx.get(url=pokemon_url)
+        response: Response = httpx.get(url=pokemon_url)
     except Exception as e:
         print(e)
         raise HTTPException(
